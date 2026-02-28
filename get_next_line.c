@@ -32,7 +32,7 @@ static int	fill_stash(int fd, char **stash)
 		buffer[bytes] = '\0';
 		tmp = gnl_strjoin(*stash, buffer);
 		if (!tmp)
-			return (free(buffer), -1);
+			return (*stash = NULL, free(buffer), -1);
 		*stash = tmp;
 	}
 	return (free(buffer), 0);
